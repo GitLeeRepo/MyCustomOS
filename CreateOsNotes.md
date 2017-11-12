@@ -92,3 +92,9 @@ SECTIONS
 ### Create Boot ISO
 
 grub-mkrescue iso --output=myos.iso
+
+# Issues
+
+## Issues with grub-mkrescue
+
+In trying to run **grub-mkrescue iso --output=myos.iso** I got an error saying I needed to update my version of **xorriso** so I ran **sudo apt install xorriso**.  On another Ubuntu install it failed with a **grub-mkrescue: error: `mformat` invocation failed**, this was solved by installing **mtools** with **sudo apt install mtools**, because mformat is part of mtools.
