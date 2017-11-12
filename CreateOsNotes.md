@@ -14,7 +14,7 @@ Notes on writing your own OS in x86 Assembler and C, using name and gcc.
 
 # Examples
 
-Based on code from [Create Your Own Operating System](https://www.amazon.com/gp/product/B01KU8N6FC/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1) by Lucus Darnell.  I added my own comments and modified it slightly to add nulls on the end, inorder to fill it with nulls to pad the end of the 1.4M diskette image.  I needed to do this because I renamed the bootloader.img file to bootloader.vfd that is needed for a floppy disk image on Hyper-V in Windows 10 Professioal.  Without doing that I got an error saying it was an invalid virtual floppy disk.
+Based on code from [Create Your Own Operating System](https://www.amazon.com/gp/product/B01KU8N6FC/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1) by Lucus Darnell.  I added my own comments and modified it slightly to add nulls on the end, inorder to fill it with nulls to pad the end of the 1.44M diskette image.  I needed to do this because I renamed the bootloader.img file to bootloader.vfd that is needed for a floppy disk image on Hyper-V in Windows 10 Professioal.  Without doing that I got an error saying it was an invalid virtual floppy disk.
 
 Once solving the floppy disk issue, the image booted without issue as a Hyper-V virtual machine.  This is only the boot loader code, which runs in 16-bit Real Mode, displaying a message using .  It does not load the 32-bit kernel in protected mode.
 
@@ -59,7 +59,7 @@ print:
 
 times   510 -($ - $$) db 0      ; null fill until ...
 dw      0xaa55                  ; the last two bytes of the MBR
-times   1474560 -($ - $$) db 0  ; null fill the rest out to the size of a 1.4MB diskette    
+times   1474560 -($ - $$) db 0  ; null fill the rest out to the size of a 1.44MB diskette    
 ```
 
 Compile
