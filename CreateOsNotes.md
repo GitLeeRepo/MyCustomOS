@@ -69,5 +69,26 @@ nasm -f bin -o bootloader.img bootloader.asm
 # no link run.  Object file copied to a diskette boot image that is booted in a Hyper-v virtual machine
 ```
 
+## Kernel
 
+TBD: Rought notes below, needs update
 
+gcc -c kernel.c -o kernel.o -ffreestanding -fno-exceptions -m32
+
+nasm -f elf32 -o boot.o boot.asm
+gcc -m32 -nostdlib -nodefaultlibs boot.o -T linker.ld -o myos
+
+### Linker.ld
+
+ENTRY(_start)
+SECTIONS
+{
+. = 0x10000;
+.text : { *(.text) }
+.data : { *(.data) }
+.bss : { *(.bss) }
+}
+
+### Create Boot ISO
+
+grub-mkrescue iso --output=myos.iso
