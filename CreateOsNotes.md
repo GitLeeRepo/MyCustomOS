@@ -101,7 +101,21 @@ SECTIONS
 
 ### Create Boot ISO
 
+Note: before the following is run the subfolders **iso/boot/grub** must be created and the grub folder needs a **grub.cfg** file and the **boot** folder needs the kernel image itself (this config file is listed after the command below).
+
+```
 grub-mkrescue iso --output=myos.iso
+```
+
+**grub.cfg:**
+
+```
+set timeout=10
+set default=0
+menuentry "MyOS" [
+    multiboot /boot/myos
+]
+```
 
 **Verifying valid multiboot image**
 
@@ -110,6 +124,10 @@ The following will verify that the multiboot headers are valid in the compiled k
 ```
 grub-file --is-x86-multiboot myos
 ```
+
+### Make file
+
+The **myos** subfolder of this repository contains a **Makefile** that automates the above compile, assemble, link, and grub-mkrescue commands.
 
 ### Current Issue with the Kernel
 
