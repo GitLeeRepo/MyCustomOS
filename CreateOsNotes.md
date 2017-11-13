@@ -73,10 +73,13 @@ nasm -f bin -o bootloader.img bootloader.asm
 
 TBD: Rought notes below, needs update
 
+```
 gcc -c kernel.c -o kernel.o -ffreestanding -fno-exceptions -m32
 
 nasm -f elf32 -o boot.o boot.asm
+
 gcc -m32 -nostdlib -nodefaultlibs boot.o -T linker.ld -o myos
+```
 
 ### Linker.ld
 
