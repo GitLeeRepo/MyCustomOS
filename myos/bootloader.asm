@@ -39,5 +39,5 @@ print:
 
 times   510 -($ - $$) db 0      ; null fill until ...
 dw      0xaa55                  ; the last two bytes of the MBR
-times   1474560 -($ - $$) db 0  ; null fill the rest out to the size of a 1.4MB diskette
+times   1474560 -($ - $$) db 0  ; null fill the rest out to the size of a 1.44MB diskette
 

@@ -12,7 +12,7 @@ all: finale
 
 $(TARGET): $(OBJS)
 	$(shell nasm -f elf boot.asm -o boot.o)
-	$(CC) -m32 -nostdlib -nodefaultlibs boot.o $? -T linker.ld -o $(TARGET)
+	$(CC) -m32 -nostdlib -nodefaultlibs -lgcc boot.o  $? -T linker.ld -o $(TARGET)
 
 finale:
 	$(shell cp $(TARGET) ./iso/boot/$(TARGET))

@@ -13,9 +13,14 @@ int main(void) {
 
     while (str[i] != '\0'){
         VGA_MEMORY[j] = str[i];
-        VGA_MEMORY[j+1] = 0x07;
+        VGA_MEMORY[j+1] = 0x02;
         i++;
         j = j+2;
+    }
+
+    // temp infite loop
+    while (1==1) {
+
     }
     return 0;
 }

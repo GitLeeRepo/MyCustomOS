@@ -1,7 +1,8 @@
 ENTRY(_start)
 SECTIONS
 {
-. = 0x10000;
+. = 1M;
 .text : { *(.text) }
+.multiboot : { *(.multiboot) }
 .bss : { *(.bss) }
 }
