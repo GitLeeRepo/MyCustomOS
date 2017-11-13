@@ -4,6 +4,10 @@ Notes on writing your own OS in x86 Assembler and C, using name and gcc.
 
 # References
 
+## Websites
+
+* [Creating an Operating System](http://wiki.osdev.org/Creating_an_Operating_System)
+
 ## Books
 
 * [Create Your Own Operating System](https://www.amazon.com/gp/product/B01KU8N6FC/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1) by Lucus Darnell
