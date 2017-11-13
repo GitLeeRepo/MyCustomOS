@@ -73,19 +73,22 @@ nasm -f bin -o bootloader.img bootloader.asm
 # no link run.  Object file copied to a diskette boot image that is booted in a Hyper-v virtual machine
 ```
 
-## Kernel
+## Kernel (currently not working)
 
-TBD: Rought notes below, needs update
+TBD: Rought notes below, needs update once this is working correctly
 
 ```
 gcc -c kernel.c -o kernel.o -ffreestanding -fno-exceptions -m32
 
 nasm -f elf32 -o boot.o boot.asm
 
-gcc -m32 -nostdlib -nodefaultlibs boot.o -T linker.ld -o myos
+gcc -m32 -nostdlib -nodefaultlibs boot.o -lgcc kernel.o -T linker.ld -o myos
 ```
+Note: it will currently not link with the -lgcc option.  By removing this option it links fine, but ultimately the kernel is not loaded properly by GRUB (no error it just returns immediately after attempting to load with **multiboot /boot/myos**, with GRUB still being active aferwards.  It appears (from [this article](http://wiki.osdev.org/Bare_Bones) that the reason the **-lgcc** doesn't work is a result of the **cross platform compiling** options of gcc not being installed.  Normally it automatically links with **libgcc** without explicitly adding **-lgcc** but because the libraries are being excluded, it is also excluded.  It is unknown at this time if this is causing the issue, and it may not since the **grub-file --is-x86-multiboot myos** command that verifies if this is a valid multiboot kernel indicates its good.
 
 ### Linker.ld
+
+The linker.ld file used in the above gcc link command.  The **0x10000000** entry is the starting address for the kernel that the boot loader looks for. The remaining entries tell the to merge the various .text, .data, .bss sections.
 
 ENTRY(_start)
 SECTIONS
@@ -99,6 +102,18 @@ SECTIONS
 ### Create Boot ISO
 
 grub-mkrescue iso --output=myos.iso
+
+**Verifying valid multiboot image**
+
+The following will verify that the multiboot headers are valid in the compiled kernel imsage (**myos** in my case)
+
+```
+grub-file --is-x86-multiboot myos
+```
+
+### Current Issue with the Kernel
+
+Copied from note above: it will currently not link with the -lgcc option.  By removing this option it links fine, but ultimately the kernel is not loaded properly by GRUB (no error it just returns immediately after attempting to load with **multiboot /boot/myos**, with GRUB still being active aferwards.  It appears (from [this article](http://wiki.osdev.org/Bare_Bones) that the reason the **-lgcc** doesn't work is a result of the **cross platform compiling** options of gcc not being installed.  Normally it automatically links with **libgcc** without explicitly adding **-lgcc** but because the libraries are being excluded, it is also excluded.  It is unknown at this time if this is causing the issue, and it may not since the **grub-file --is-x86-multiboot myos** command that verifies if this is a valid multiboot kernel indicates its good.
 
 # Issues
 
