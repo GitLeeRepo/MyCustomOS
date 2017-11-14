@@ -16,7 +16,7 @@ Notes on writing your own OS in x86 Assembler and C, using name and gcc.
 
 * [gdb debugger](https://github.com/GitLeeRepo/x86Andx64AsmNotes/blob/master/gdbDebugerNotes.md#overview)
 * [Windows x86 ASM Notes](https://github.com/GitLeeRepo/x86Andx64AsmNotes/blob/master/Windows_x86AsmNotes.md#overview) - contains the bulk of my x86 notes.  The Linux Notes below are focused on Linux specific features.
-* [Linux x64 ASM Notes](https://github.com/GitLeeRepo/x86Andx64AsmNotes/blob/master/Windows_x86AsmNotes.md#overview)
+* [Linux x64 ASM Notes](https://github.com/GitLeeRepo/x86Andx64AsmNotes/blob/master/Linux_x64AsmNotes.md#overview)
 
 ## YouTube Videos
 
