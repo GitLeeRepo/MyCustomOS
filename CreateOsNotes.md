@@ -1,6 +1,6 @@
 # Overview
 
-Notes on writing your own OS in x86 Assembler and C, using name and gcc.
+Notes on writing your own OS in x86 Assembler and C, using nasm and gcc on Ubuntu 17, in addition to creating a bootable (with GRUB) ISO.
 
 # References
 
