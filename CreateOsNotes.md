@@ -12,6 +12,12 @@ Notes on writing your own OS in x86 Assembler and C, using name and gcc.
 
 * [Create Your Own Operating System](https://www.amazon.com/gp/product/B01KU8N6FC/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1) by Lucus Darnell
 
+## My Other Notes
+
+* [gdb debugger](https://github.com/GitLeeRepo/x86Andx64AsmNotes/blob/master/gdbDebugerNotes.md#overview)
+* [Windows x86 ASM Notes](https://github.com/GitLeeRepo/x86Andx64AsmNotes/blob/master/Windows_x86AsmNotes.md#overview) - contains the bulk of my x86 notes.  The Linux Notes below are focused on Linux specific features.
+* [Linux x64 ASM Notes](https://github.com/GitLeeRepo/x86Andx64AsmNotes/blob/master/Windows_x86AsmNotes.md#overview)
+
 ## YouTube Videos
 
 * [Write your own Operating System](https://www.youtube.com/watch?v=1rnA6wpF0o4&list=PLHh55M_Kq4OApWScZyPl5HhgsTJS9MZ6M) - In depth series of videos.  Uses C++ rather than C.
