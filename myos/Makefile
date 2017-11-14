@@ -11,8 +11,8 @@ all: finale
 	$(CC) -c $(@:.o=.c) -o $@ -ffreestanding -fno-exceptions -m32
 
 $(TARGET): $(OBJS)
-	$(shell nasm -f elf boot.asm -o boot.o)
-	$(CC) -m32 -nostdlib -nodefaultlibs -lgcc boot.o  $? -T linker.ld -o $(TARGET)
+	$(shell nasm -f elf kernel_load.asm -o kernel_load.o)
+	$(CC) -m32 -nostdlib -nodefaultlibs -lgcc kernel_load.o  $? -T linker.ld -o $(TARGET)
 
 finale:
 	$(shell cp $(TARGET) ./iso/boot/$(TARGET))

@@ -9,8 +9,8 @@
 
 bits 32
 global _start
-extern kernel_early
-extern main
+extern kernel_init
+extern kernel_main
 
 section .multiboot
     align 4
@@ -23,8 +23,8 @@ section .text
 _start:
     cli
     mov esp,stack           ; key part setting intially stack
-    call kernel_early
-    call main
+    call kernel_init
+    call kernel_main
     cli
 ;    jmp $                   ; infinite loop
 h:  hlt
