@@ -57,3 +57,4 @@ dkms.conf
 # Project specific executable without extensions
 
 myos
+straddr32
