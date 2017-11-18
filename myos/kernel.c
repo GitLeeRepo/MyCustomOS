@@ -6,7 +6,7 @@ void kernel_init(void) {
     // tbd
 }
 
-unsigned int kprint(char *str, int i, int j) {
+unsigned int kprint(const char *str, int i, int j) {
     while (str[i] != '\0'){
         VGA_MEMORY[j] = str[i];
         VGA_MEMORY[j+1] = 0x02;

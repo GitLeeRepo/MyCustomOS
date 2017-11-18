@@ -1,4 +1,5 @@
 CC=gcc
+AS=nasm
 TARGET=myos
 C_FILES=./kernel.c
 OBJS=$(C_FILES:.c=.o)
@@ -11,7 +12,7 @@ all: finale
 	$(CC) -c $(@:.o=.c) -o $@ -ffreestanding -fno-exceptions -m32
 
 $(TARGET): $(OBJS)
-	$(shell nasm -f elf kernel_load.asm -o kernel_load.o)
+	$(AS) -f elf kernel_load.asm -o kernel_load.o
 	$(CC) -m32 -nostdlib -nodefaultlibs -lgcc kernel_load.o  $? -T linker.ld -o $(TARGET)
 
 finale:
