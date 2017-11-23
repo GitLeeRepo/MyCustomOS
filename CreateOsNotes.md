@@ -7,7 +7,7 @@ Notes on writing your own OS in x86 Assembler and C, using nasm and gcc on Ubunt
 ## Websites
 
 * [Creating an Operating System](http://wiki.osdev.org/Creating_an_Operating_System)
-* [Programmable_Interval_Timer)](http://wiki.osdev.org/Programmable_Interval_Timer) - PIT: Timers and Implementing Sleep
+* [Programmable_Interval_Timer](http://wiki.osdev.org/Programmable_Interval_Timer) - PIT: Timers and Implementing Sleep
 
 ## Books
 
