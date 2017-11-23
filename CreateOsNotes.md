@@ -4,6 +4,10 @@ Notes on writing your own OS in x86 Assembler and C, using nasm and gcc on Ubunt
 
 # References
 
+# Books
+
+* [Operating Systems: 3 Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/) - Online version
+
 ## Websites
 
 * [Creating an Operating System](http://wiki.osdev.org/Creating_an_Operating_System)
