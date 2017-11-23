@@ -7,6 +7,7 @@ Notes on writing your own OS in x86 Assembler and C, using nasm and gcc on Ubunt
 ## Websites
 
 * [Creating an Operating System](http://wiki.osdev.org/Creating_an_Operating_System)
+* [Timers and Implementing Sleep]()
 
 ## Books
 
