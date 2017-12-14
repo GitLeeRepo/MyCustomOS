@@ -29,7 +29,7 @@ Notes on writing your own OS in x86 Assembler and C, using nasm and gcc on Ubunt
 
 # Examples
 
-Based on code from [Create Your Own Operating System](https://www.amazon.com/gp/product/B01KU8N6FC/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1) by Lucus Darnell.  I added my own comments and modified it slightly to add nulls on the end, inorder to fill it with nulls to pad the end of the 1.44M diskette image.  I needed to do this because I renamed the bootloader.img file to bootloader.vfd that is needed for a floppy disk image on Hyper-V in Windows 10 Professioal.  Without doing that I got an error saying it was an invalid virtual floppy disk.
+Based on code from [Create Your Own Operating System](https://www.amazon.com/gp/product/B01KU8N6FC/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1) by Lucus Darnell.  I added my own comments and modified it slightly to add nulls on the end, in order to fill it with nulls to pad the end of the 1.44M diskette image.  I needed to do this because I renamed the bootloader.img file to bootloader.vfd that is needed for a floppy disk image on Hyper-V in Windows 10 Professional.  Without doing that I got an error saying it was an invalid virtual floppy disk.
 
 Once solving the floppy disk issue, the image booted without issue as a Hyper-V virtual machine.  This is only the boot loader code, which runs in 16-bit Real Mode, displaying a message using .  It does not load the 32-bit kernel in protected mode.
 
@@ -86,7 +86,7 @@ nasm -f bin -o bootloader.img bootloader.asm
 
 ## Kernel
 
-TBD: Rought notes below, needs updating
+TBD: Rough notes below, needs updating
 
 ```
 gcc -c kernel.c -o kernel.o -ffreestanding -fno-exceptions -m32
@@ -143,7 +143,7 @@ The **myos** subfolder of this repository contains a **Makefile** that automates
 
 ### Current Issue with the Kernel
 
-**Disregard, it is working now***.  Temporarily leaving this notes until I update the info further: it will currently not link with the -lgcc option.  By removing this option it links fine, but ultimately the kernel is not loaded properly by GRUB (no error it just returns immediately after attempting to load with **multiboot /boot/myos**, with GRUB still being active aferwards.  It appears (from [this article](http://wiki.osdev.org/Bare_Bones) that the reason the **-lgcc** doesn't work is a result of the **cross platform compiling** options of gcc not being installed.  Normally it automatically links with **libgcc** without explicitly adding **-lgcc** but because the libraries are being excluded, it is also excluded.  It is unknown at this time if this is causing the issue, and it may not since the **grub-file --is-x86-multiboot myos** command that verifies if this is a valid multiboot kernel indicates its good.  Also, the disassembly from running **objdump -d -M intel myos** shows the program correctly starting at address **0x10000000**, and shows all the expected instructions from both the boot.o and kernel.o object files.
+**Disregard, it is working now***.  Temporarily leaving this notes until I update the info further: it will currently not link with the -lgcc option.  By removing this option it links fine, but ultimately the kernel is not loaded properly by GRUB (no error it just returns immediately after attempting to load with **multiboot /boot/myos**, with GRUB still being active aferwards.  It appears (from [this article](http://wiki.osdev.org/Bare_Bones) that the reason the **-lgcc** doesn't work is a result of the **cross platform compiling** options of gcc not being installed.  Normally it automatically links with **libgcc** without explicitly adding **-lgcc** but because the libraries are being excluded, it is also excluded.  It is unknown at this time if this is causing the issue, and it may not since the **grub-file --is-x86-multiboot myos** command that verifies if this is a valid multi boot kernel indicates its good.  Also, the disassembly from running **objdump -d -M intel myos** shows the program correctly starting at address **0x10000000**, and shows all the expected instructions from both the boot.o and kernel.o object files.
 
 # Issues
 

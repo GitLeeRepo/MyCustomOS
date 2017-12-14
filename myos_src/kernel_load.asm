@@ -26,7 +26,6 @@ _start:
     call kernel_init
     call kernel_main
     cli
-;    jmp $                   ; infinite loop
 h:  hlt
     jmp h
 
