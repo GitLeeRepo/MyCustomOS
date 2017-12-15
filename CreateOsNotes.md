@@ -54,7 +54,7 @@ start:
 
     mov si,msg              ; load msg addr for the lodsb instruction for printing
     call print
-    cli                     ; clear interupts
+    cli                     ; clear interrupts
     hlt
 
 data:
@@ -130,7 +130,7 @@ menuentry "MyOS" {
 
 **Verifying valid multiboot image**
 
-The following will verify that the multiboot headers are valid in the compiled kernel imsage (**myos** in my case)
+The following will verify that the multiboot headers are valid in the compiled kernel image (**myos** in my case)
 
 ```
 grub-file --is-x86-multiboot myos ; echo $?
@@ -143,7 +143,7 @@ The **myos** subfolder of this repository contains a **Makefile** that automates
 
 ### Current Issue with the Kernel
 
-**Disregard, it is working now***.  Temporarily leaving this notes until I update the info further: it will currently not link with the -lgcc option.  By removing this option it links fine, but ultimately the kernel is not loaded properly by GRUB (no error it just returns immediately after attempting to load with **multiboot /boot/myos**, with GRUB still being active aferwards.  It appears (from [this article](http://wiki.osdev.org/Bare_Bones) that the reason the **-lgcc** doesn't work is a result of the **cross platform compiling** options of gcc not being installed.  Normally it automatically links with **libgcc** without explicitly adding **-lgcc** but because the libraries are being excluded, it is also excluded.  It is unknown at this time if this is causing the issue, and it may not since the **grub-file --is-x86-multiboot myos** command that verifies if this is a valid multi boot kernel indicates its good.  Also, the disassembly from running **objdump -d -M intel myos** shows the program correctly starting at address **0x10000000**, and shows all the expected instructions from both the boot.o and kernel.o object files.
+**Disregard, it is working now***.  Temporarily leaving this notes until I update the info further: it will currently not link with the -lgcc option.  By removing this option it links fine, but ultimately the kernel is not loaded properly by GRUB (no error it just returns immediately after attempting to load with **multiboot /boot/myos**, with GRUB still being active afterwards.  It appears (from [this article](http://wiki.osdev.org/Bare_Bones) that the reason the **-lgcc** doesn't work is a result of the **cross platform compiling** options of gcc not being installed.  Normally it automatically links with **libgcc** without explicitly adding **-lgcc** but because the libraries are being excluded, it is also excluded.  It is unknown at this time if this is causing the issue, and it may not since the **grub-file --is-x86-multiboot myos** command that verifies if this is a valid multi boot kernel indicates its good.  Also, the disassembly from running **objdump -d -M intel myos** shows the program correctly starting at address **0x10000000**, and shows all the expected instructions from both the boot.o and kernel.o object files.
 
 # Issues
 
